@@ -40,6 +40,10 @@ def display_loading_animation(user_id, loading_seconds=20):
     if response.status_code != 200:
         print(f"Error displaying loading animation: {response.status_code} - {response.text}")
 
+@app.route("/healthcheck", methods=['GET'])
+def healthcheck():
+    return jsonify(status="ok"), 200
+
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
